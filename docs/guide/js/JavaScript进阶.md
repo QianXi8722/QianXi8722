@@ -1,4 +1,5 @@
-## 内存管理
+## 函数
+### 内存管理
 
 > 内存分为新生代和老生代
 > 新生代：短时间存活的新变量会存放到新生代，内存极小
@@ -23,7 +24,7 @@ node端：process.memoryUsage()
 
 :::
 
-## 函数式编程
+### 函数式编程
 
 > 函数式编程：把功能分解为一系列独立的函数，通过函数间相互调用来完成功能
 
@@ -33,7 +34,7 @@ node端：process.memoryUsage()
 
 *** Object.create()  : 创建一个对象 ***
 
-## 工程化的函数式编程
+### 工程化的函数式编程
 ```js
 // 普通
 // es6
@@ -60,7 +61,7 @@ function fun2 () {}
 const all = require('./model.js');
 const fun1 = reuqire('./model.js').fun1;
 ```
-## compose 和 Pipe函数
+### compose 和 Pipe函数
 ```js
 function add(x) {
   return x + 1
@@ -100,7 +101,7 @@ console.log(pipe(1)) // 20
 ```
 
 
-## 防抖和节流
+### 防抖和节流
 
 ```js
 /*函数节流*/
@@ -132,7 +133,7 @@ function debounce(fn, interval) {
 }
 ```
 
-## 高阶函数
+### 高阶函数
 > 如果一个函数接受另外一个函数作为参数，那么称这个函数为高阶函数
 > 如： forEach  Map   reduce   filter
 
@@ -171,26 +172,67 @@ Array.propotype.myForEach = function(callback) {
 }
 ```
 
-## 函数柯里化
+### 函数柯里化
 
-> 将一个接受多个参数的函数 转化为一系列使用一个参数函数的技术。即将一个n元函数，转化为n个一元函数。
-
+> 定义：将一个接受多个参数的函数转成接收一个单一参数(最初函数的第一个参数)的函数。并且接收余下的参数 而且返回结果的新函数的技术
+> 意义：1.不方便传入参数时， 2.写的方法传入的参数固定
 ```js
+// 回调
+function a(b) {
+}
+Promise.resolve().then(a(b))   // 这里是调用a方法，而不是给其一个函数，所以不可取
+Promise.resolve().then(a.bind(this, 123)) // 通过bind绑定传 函数
+
+// 实例
+// 验证表单输入值-是否是纯数字
+function inputTest(reg, value) {}
+
+const numberTest = inputTest.bind(this, /^[0-9]*$/)
+numberTest(123)
 
 ```
 
-## event Loop 事件
+```js
+// 实现柯里化
+function aCurry (num1) {
+  return function (num2) {
+    console.log(num1, num2)
+  }
+}
+function a(num1, num2) {
+}
+aCurry(1)(2)
+
+// 手写实现bind函数  参数thisArg是传过来的this
+Function.prototype.mybind = function(thisArg) {
+  // 这里的this 不是thisArg 而是调用bind的函数 
+  // a.bind() this指向 a
+  if(typeof this !== 'function') {
+    return;
+  }
+  var _that = this;
+  // 获取参数数组，因为第一个参数是this，所以这里要把this筛选掉
+  var args = Array.prototype.slice.call(arguments, 1)
+  return function() {
+    // 这里的args参数要做拼接，因为这个匿名函数还有可能有参数传过来
+    // 新参数和老参数拼接
+    return _that.apply(thisArg, args.concat(Array.prototype.slice.call(arguments)))
+  }
+}
+```
+## 异步编程
+### event Loop 事件
 > javascript 单线程非阻塞的脚本语言
 > 宏任务
 > 微任务 
 
-## 异步编程-发布订阅
+### 异步编程-发布订阅
 
 
-## 深入理解Promise
+### 深入理解Promise
 
 
-## Generator函数及其异步应用
+### Generator函数及其异步应用
 
 > 线程是操作系统能够运算调度的最小单位
 > 一条线程指的是进程中一个单一顺序的控制流，一个进程中可以并发多个线程，每条线程执行不同的任务
@@ -220,13 +262,13 @@ gen.next(2); // {value: 4, done:false}
 
 ```
 
-## 基于Thunk函数的Generator自动执行器
+### 基于Thunk函数的Generator自动执行器
 
 > Thunk 函数是自动执行 Generator 函数的一种方法 
 > 编译器的“传名调用”实现，往往是将参数放到一个临时函数之中，再将这个临时函数传入函数体。这个临时函数就叫做 Thunk 函数。
 
 
-## Web Worker多线程机制
+### Web Worker多线程机制
 
 > 主线程：ui  样式渲染
 > 多线程：js执行
