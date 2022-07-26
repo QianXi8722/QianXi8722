@@ -274,3 +274,72 @@ gen.next(2); // {value: 4, done:false}
 > 多线程：js执行
 > 浏览器的16ms渲染帧
 > 渲染帧流程：脚本执行（js）-DOM树构建/样式计算（css）-布局（layout）-重绘（paint，如3D）-合成（composite，合成各层的渲染结果）
+
+
+
+## 设计模式
+### 提高复用性
+```js
+function mover() {
+  this.status = [];
+  this.actionHandle = {
+    left:moverLeft,
+    right:moveRight,
+    top:moveTop,
+    bottom:moveBottom,
+  }
+}
+mover.prototype.run = function() {
+  this.status = Array.prototype.slice.call(arguments);
+  this.status.forEach((action) => {
+    this.actionHandle[action]();
+  })
+}
+new mover().run('left')
+
+```
+### 提高可扩展性
+```js
+1.适配器模式--方法名不通用 
+//  用适配代替更改的思想
+
+
+2. 装饰者模式
+apply:  参数不定
+call: 参数确定
+var 
+```
+### 面试题(精准、全面)
+ 1. 什么是？ 题目概念
+ 2. 有什么用？应用场景
+ 3. 优缺点？ 生化用的
+<!-- ::: tip -->
+一.浏览器是如何渲染页面的？
+ cssOM(css object model) 
+ 采用css代码 将每个选择器 转呈现为树状结构，是css样式表的对象
+ 表示，提供api操作css
+
+ W3C中css包括两个部分：
+ 1.model:描述样式表和规则的模型部分
+ 2.view： 和元素视图相关的api
+
+ Dom树构建：
+    1. 通过网络获取字节流和字符，2.对字符序列 进行分词操作
+    3.得到node节点，构建dom树
+ cssOM： 
+    依赖Dom,浏览器会从父节点递归方式向下添加css样式
+  常用方法：
+    document.styleSheets() 
+    insertRule()  向rule列表中前置
+    removeRule()  删除rule列表中内容
+  view：窗口部分   滚动部分   布局部分
+
+  浏览器将域名通过网络通信 从服务器拿到html后
+      根据html构建dom树 和cssOM树  ，构建DOM的期间 遇到js
+      阻塞dom cssOm 优先加载js
+  渲染树：是dom和cssOM合并而成的，根据渲染树计算每个元素的布局渲     染到屏幕
+  在构建渲染树的时候，js会操作DOM或者cssOM引起浏览器对页面进行重绘 和重排
+
+  重绘：渲染树节点会发生改变 但不影响空间位置的大小（颜色，字体）
+  重排：位置大小都发生变化
+<!-- ::: -->
