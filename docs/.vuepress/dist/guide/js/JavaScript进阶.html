@@ -8,7 +8,7 @@
     <link rel="icon" href="/public/image/avatar.jpg">
     <meta name="description" content="qianxi blog">
     
-    <link rel="preload" href="/assets/css/0.styles.d9b13dbe.css" as="style"><link rel="preload" href="/assets/js/app.19689aa8.js" as="script"><link rel="preload" href="/assets/js/2.027b195c.js" as="script"><link rel="preload" href="/assets/js/9.d8c29a8b.js" as="script"><link rel="prefetch" href="/assets/js/10.bd96f42d.js"><link rel="prefetch" href="/assets/js/3.304edb66.js"><link rel="prefetch" href="/assets/js/4.dbd6a3bd.js"><link rel="prefetch" href="/assets/js/5.b9b955e7.js"><link rel="prefetch" href="/assets/js/6.e3110d51.js"><link rel="prefetch" href="/assets/js/7.24d22c22.js"><link rel="prefetch" href="/assets/js/8.424587aa.js">
+    <link rel="preload" href="/assets/css/0.styles.d9b13dbe.css" as="style"><link rel="preload" href="/assets/js/app.80639ee6.js" as="script"><link rel="preload" href="/assets/js/2.027b195c.js" as="script"><link rel="preload" href="/assets/js/9.b0b206ef.js" as="script"><link rel="prefetch" href="/assets/js/10.43f62dd1.js"><link rel="prefetch" href="/assets/js/11.ba89b4aa.js"><link rel="prefetch" href="/assets/js/12.6fab70bd.js"><link rel="prefetch" href="/assets/js/3.72802508.js"><link rel="prefetch" href="/assets/js/4.dbd6a3bd.js"><link rel="prefetch" href="/assets/js/5.b9b955e7.js"><link rel="prefetch" href="/assets/js/6.e3110d51.js"><link rel="prefetch" href="/assets/js/7.bf27c8a7.js"><link rel="prefetch" href="/assets/js/8.e08085bb.js">
     <link rel="stylesheet" href="/assets/css/0.styles.d9b13dbe.css">
   </head>
   <body>
@@ -20,7 +20,7 @@
     Home
   </a></div><div class="nav-item"><a href="/guide/js/" class="nav-link router-link-active">
     guide
-  </a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/guide/js/JavaScript进阶.html" class="active sidebar-link">js</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guide/js/JavaScript进阶.html#函数" class="sidebar-link">函数</a></li><li class="sidebar-sub-header"><a href="/guide/js/JavaScript进阶.html#异步编程" class="sidebar-link">异步编程</a></li><li class="sidebar-sub-header"><a href="/guide/js/JavaScript进阶.html#设计模式" class="sidebar-link">设计模式</a></li><li class="sidebar-sub-header"><a href="/guide/js/JavaScript进阶.html#面试题-精准、全面" class="sidebar-link">面试题(精准、全面)</a></li><li class="sidebar-sub-header"><a href="/guide/js/JavaScript进阶.html#js章节复习课" class="sidebar-link">js章节复习课</a></li><li class="sidebar-sub-header"><a href="/guide/js/JavaScript进阶.html#数据结构-和-栈操作" class="sidebar-link">数据结构 和 栈操作</a></li></ul></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="函数"><a href="#函数" class="header-anchor">#</a> 函数</h2> <h3 id="内存管理"><a href="#内存管理" class="header-anchor">#</a> 内存管理</h3> <blockquote><p>内存分为新生代和老生代
+  </a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/guide/js/JavaScript进阶.html" class="active sidebar-link">js</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guide/js/JavaScript进阶.html#函数" class="sidebar-link">函数</a></li><li class="sidebar-sub-header"><a href="/guide/js/JavaScript进阶.html#异步编程" class="sidebar-link">异步编程</a></li><li class="sidebar-sub-header"><a href="/guide/js/JavaScript进阶.html#设计模式" class="sidebar-link">设计模式</a></li><li class="sidebar-sub-header"><a href="/guide/js/JavaScript进阶.html#面试题-精准、全面" class="sidebar-link">面试题(精准、全面)</a></li><li class="sidebar-sub-header"><a href="/guide/js/JavaScript进阶.html#js章节复习课" class="sidebar-link">js章节复习课</a></li><li class="sidebar-sub-header"><a href="/guide/js/JavaScript进阶.html#数据结构-和-栈操作" class="sidebar-link">数据结构 和 栈操作</a></li></ul></li><li><a href="/guide/other/随笔.html" class="sidebar-link">随笔</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="函数"><a href="#函数" class="header-anchor">#</a> 函数</h2> <h3 id="内存管理"><a href="#内存管理" class="header-anchor">#</a> 内存管理</h3> <blockquote><p>内存分为新生代和老生代
 新生代：短时间存活的新变量会存放到新生代，内存极小
 老生代：生存时间较长的变量会存放到老生代，几乎占据所有内存</p></blockquote> <blockquote><p>怎么判断一个变量可以回收？
 1.全局变量会到程序执行完毕，才会回收
@@ -28,7 +28,27 @@
 1.新生代发现本次复制，会占用超过百分之二十五的to空间
 2.这个对象已经经历一次回收</p></blockquote> <h3 id="如何检测内存"><a href="#如何检测内存" class="header-anchor">#</a> 如何检测内存</h3> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>浏览器端:  window.performance.memory</p> <p>node端：process.memoryUsage()</p></div> <h3 id="函数式编程"><a href="#函数式编程" class="header-anchor">#</a> 函数式编程</h3> <blockquote><p>函数式编程：把功能分解为一系列独立的函数，通过函数间相互调用来完成功能</p></blockquote> <blockquote><p>函数式编程的函数要求
 1.保证纯函数：一个函数的返回结果只依赖于他的参数，同样的输入必定有同样的输出
-2.减少函数副作用：会影响外部的数据，如全局变量</p></blockquote> <p>*** Object.create()  : 创建一个对象 ***</p> <h3 id="工程化的函数式编程"><a href="#工程化的函数式编程" class="header-anchor">#</a> 工程化的函数式编程</h3> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">// 普通</span>
+2.减少函数副作用：会影响外部的数据，如全局变量</p></blockquote> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>typeof 和 instanceof 的区别？</p> <div class="language- extra-class"><pre><code>typeof 返回一个字符串，说明变量的数据类型，对于array 和 null 一律返回object类型。
+       类型：number boolean  string function object undefined
+instanceof 返回值是布尔值，用于判断一个变量是否属于某个对象的实例
+        let arr = new Array();
+        arr instanceof Array     // true
+</code></pre></div><p>栈  堆   池</p> <div class="language- extra-class"><pre><code>栈：存放变量（基本数据类型大小固定，操作简单所以放入栈中存储）
+堆：存放复杂对象（引用类型变量大小不固定，所以分配给堆中，申请空间时自己确定大小）
+池：存放常量（常量池）
+闭包中的变量不保存在栈中，而是保存在堆内存中
+
+闭包：能够读取其他函数内部变量的函数
+function A () {
+  let a= 1;
+  function B() {
+    console.log(a);
+  }
+  return B;
+}
+let res = A();
+函数A 返回函数B,并且函数B中引用了函数A的变量，那么函数B被称为闭包
+</code></pre></div></div> <p>*** Object.create()  : 创建一个对象 ***</p> <h3 id="工程化的函数式编程"><a href="#工程化的函数式编程" class="header-anchor">#</a> 工程化的函数式编程</h3> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">// 普通</span>
 <span class="token comment">// es6</span>
 <span class="token keyword">function</span> <span class="token function">class1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
 <span class="token keyword">export</span> <span class="token keyword">default</span> class1<span class="token punctuation">;</span>
@@ -256,21 +276,22 @@ css文件下载  生成cssOm 再去解析js  js依赖css</p> <p>减少阻塞</p>
 async异步不会阻塞页面</p></div> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>前端各种布局优缺点 ：</p> <p>1.静态布局：</p> <div class="language- extra-class"><pre><code>固定宽高，单位px，当窗口变化时，会出现滚动条，有遮挡
 写移动端的时候，针对于不同的手机 写多套样式   
 </code></pre></div><p>2.flex布局：</p> <div class="language- extra-class"><pre><code>代码量少 容易上手  兼容性较差
-</code></pre></div><p>3.自适应布局</p> <p>@media  媒体查询 针对不同设备 定义对应的 尺寸和大小响应式布局</p> <p>4.流式布局：</p> <p>单位用百分比计算 页面由明细那变化将不能正常显示
-5.响应式布局</p> <p>meta name=&quot;viewport&quot; 页面随窗口变化 自动调整
-选择布局方式：
+</code></pre></div><p>3.自适应布局</p> <div class="language- extra-class"><pre><code>@media  媒体查询 针对不同设备 定义对应的 尺寸和大小响应式布局
+</code></pre></div><p>4.流式布局：</p> <div class="language- extra-class"><pre><code>单位用百分比计算 页面由明细那变化将不能正常显示
+</code></pre></div><p>5.响应式布局</p> <div class="language- extra-class"><pre><code>meta name=&quot;viewport&quot; 页面随窗口变化 自动调整
+</code></pre></div><p>选择布局方式：
 pc 静态布局
 移动端：弹性布局 和 自适应布局 响应式
-pc和移动兼容：响应式 弹性布局 和自适应</p></div> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>实现浏览器 标签页的通信
-前端： cookie  localStorage websql  sessionStorage</p> <div class="language- extra-class"><pre><code>后端： 能够存储数据的都能实现标签页通讯
+pc和移动兼容：响应式 弹性布局 和自适应</p></div> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>实现浏览器 标签页的通信</p> <div class="language- extra-class"><pre><code>前端： cookie  localStorage websql  sessionStorage
 
+后端： 能够存储数据的都能实现标签页通讯
       数据库类
-</code></pre></div></div> <h2 id="js章节复习课"><a href="#js章节复习课" class="header-anchor">#</a> js章节复习课</h2> <blockquote><p>函数式
-优点：js中函数便于差分组合 可扩展性好
-缺点：管理难度大，复杂逻辑难以组织划分</p></blockquote> <blockquote><p>面向对象式
-优点：模块分明  逻辑清晰  方便组织庞大的业务
-缺点：不好配合tree-shaking js对于面向对象实现不完美</p></blockquote> <blockquote><p>异步的目的
-作为js特产，弥补了js单线程，但是他也带来了执行顺序问题</p></blockquote> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">// 复习异步</span>
+</code></pre></div></div> <h2 id="js章节复习课"><a href="#js章节复习课" class="header-anchor">#</a> js章节复习课</h2> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>函数式</p> <div class="language- extra-class"><pre><code>优点：js中函数便于差分组合 可扩展性好
+缺点：管理难度大，复杂逻辑难以组织划分
+</code></pre></div><p>面向对象式</p> <div class="language- extra-class"><pre><code>优点：模块分明  逻辑清晰  方便组织庞大的业务
+缺点：不好配合tree-shaking js对于面向对象实现不完美
+</code></pre></div><p>异步的目的</p> <div class="language- extra-class"><pre><code>作为js特产，弥补了js单线程，但是他也带来了执行顺序问题
+</code></pre></div></div> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">// 复习异步</span>
 <span class="token keyword">function</span> <span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token number">123</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
@@ -299,17 +320,23 @@ pc和移动兼容：响应式 弹性布局 和自适应</p></div> <div class="cu
 <span class="token function">asyncRun</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
-</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br></div></div><h2 id="数据结构-和-栈操作"><a href="#数据结构-和-栈操作" class="header-anchor">#</a> 数据结构 和 栈操作</h2> <blockquote><p>数据结构： 计算机存储、组织数据的方式，是描述客观事物的行为特征</p> <p>理解：</p> <p>数据：广义概念，一切事物都可以用数据化描述
-结构：数据共同作用的方式，以及数据之间的关系</p> <p>数据两个特征：</p> <p>可以输入到计算机中
-能够被计算机识别和处理</p> <p>数据的组成：</p> <p>数据元素：数据的基本单位
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br></div></div><h2 id="数据结构-和-栈操作"><a href="#数据结构-和-栈操作" class="header-anchor">#</a> 数据结构 和 栈操作</h2> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>数据结构： 计算机存储、组织数据的方式，是描述客观事物的行为特征</p> <p>理解：</p> <div class="language- extra-class"><pre><code>数据：广义概念，一切事物都可以用数据化描述
+结构：数据共同作用的方式，以及数据之间的关系
+</code></pre></div><p>数据两个特征：</p> <div class="language- extra-class"><pre><code>可以输入到计算机中
+能够被计算机识别和处理
+</code></pre></div><p>数据的组成：</p> <div class="language- extra-class"><pre><code>数据元素：数据的基本单位
 数据对象：相同特征的数据元素的集合，是数据的一个子集
-数据项：独立含义的数据的最小单位</p> <p>程序设计 = 数据结构 + 算法
-逻辑结构：数据对象中，数据元素之间的相互关系
-四种结构：
+数据项：独立含义的数据的最小单位
+</code></pre></div><p>程序设计 = 数据结构 + 算法</p> <p>逻辑结构：数据对象中，数据元素之间的相互关系</p> <div class="language- extra-class"><pre><code>四种结构：
 集合结构：数据元素属于一个集合，他们之间没有其他关系
 线性结构：一对一，有序数据的集合
 树形结构：一对多， DOM
-图形结构：多对多</p></blockquote></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.19689aa8.js" defer></script><script src="/assets/js/2.027b195c.js" defer></script><script src="/assets/js/9.d8c29a8b.js" defer></script>
+图形结构：多对多
+</code></pre></div></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/guide/other/随笔.html">
+          随笔
+        </a>
+        →
+      </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.80639ee6.js" defer></script><script src="/assets/js/2.027b195c.js" defer></script><script src="/assets/js/9.b0b206ef.js" defer></script>
   </body>
 </html>

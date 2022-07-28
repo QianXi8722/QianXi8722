@@ -4,7 +4,7 @@
  * @Autor: 吕玲
  * @Date: 2022-07-06 20:49:03
  * @LastEditors: Seven
- * @LastEditTime: 2022-07-26 15:07:18
+ * @LastEditTime: 2022-07-28 11:44:56
  */
 module.exports = {
   base: '',
@@ -23,6 +23,7 @@ module.exports = {
     ],
     sidebar: [
       ['/guide/js/JavaScript进阶', 'js'],
+      ['/guide/other/随笔', '随笔']
     ]
   }
 }
