@@ -8,8 +8,8 @@
     <link rel="icon" href="/public/image/avatar.jpg">
     <meta name="description" content="qianxi blog">
     
-    <link rel="preload" href="/assets/css/0.styles.f47b8e7c.css" as="style"><link rel="preload" href="/assets/js/app.1333784b.js" as="script"><link rel="preload" href="/assets/js/2.027b195c.js" as="script"><link rel="preload" href="/assets/js/9.e026f72c.js" as="script"><link rel="prefetch" href="/assets/js/10.e4f87f17.js"><link rel="prefetch" href="/assets/js/11.b2df4e80.js"><link rel="prefetch" href="/assets/js/12.336f8095.js"><link rel="prefetch" href="/assets/js/3.a341fa07.js"><link rel="prefetch" href="/assets/js/4.bd33b4e1.js"><link rel="prefetch" href="/assets/js/5.b9b955e7.js"><link rel="prefetch" href="/assets/js/6.e3110d51.js"><link rel="prefetch" href="/assets/js/7.bf27c8a7.js"><link rel="prefetch" href="/assets/js/8.424587aa.js">
-    <link rel="stylesheet" href="/assets/css/0.styles.f47b8e7c.css">
+    <link rel="preload" href="/assets/css/0.styles.f6817f1a.css" as="style"><link rel="preload" href="/assets/js/app.b76a0f01.js" as="script"><link rel="preload" href="/assets/js/2.027b195c.js" as="script"><link rel="preload" href="/assets/js/9.fd1b6b73.js" as="script"><link rel="prefetch" href="/assets/js/10.43f62dd1.js"><link rel="prefetch" href="/assets/js/11.ba89b4aa.js"><link rel="prefetch" href="/assets/js/12.543ebb97.js"><link rel="prefetch" href="/assets/js/3.a341fa07.js"><link rel="prefetch" href="/assets/js/4.8338fec5.js"><link rel="prefetch" href="/assets/js/5.04b95b93.js"><link rel="prefetch" href="/assets/js/6.e3110d51.js"><link rel="prefetch" href="/assets/js/7.367afbd5.js"><link rel="prefetch" href="/assets/js/8.360e1062.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.f6817f1a.css">
   </head>
   <body>
     <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">QianXi Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
@@ -455,11 +455,34 @@ Vue<span class="token punctuation">.</span><span class="token function">use</spa
 
 vue
 
-</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/guide/other/随笔.html">
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h3 id="异步更新队列"><a href="#异步更新队列" class="header-anchor">#</a> 异步更新队列</h3> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">let</span> active<span class="token punctuation">;</span>
+
+<span class="token keyword">let</span> <span class="token function-variable function">watch</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">cb</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  active <span class="token operator">=</span> cb<span class="token punctuation">;</span>
+  <span class="token function">active</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  active <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> queue <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> <span class="token function-variable function">queueJob</span> <span class="token operator">=</span> <span class="token parameter">job</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>queue<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span>job<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    queue<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>job<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> <span class="token function-variable function">flushJobs</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> job<span class="token punctuation">;</span>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>job <span class="token operator">=</span> queue<span class="token punctuation">.</span><span class="token function">shift</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!==</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">job</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><h3 id="nexttick"><a href="#nexttick" class="header-anchor">#</a> nextTick</h3> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>Vue.nextTick([callback, context])
+vm.$nextTick([callback])</p> <p>1.将回调延迟到下次DOM更新循环之后执行。
+2.通常用于再修改数据之后使用这个方法，在回调中获取更新后的DOM</p></div> <h3 id="diff算法分析"><a href="#diff算法分析" class="header-anchor">#</a> Diff算法分析</h3></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/guide/other/随笔.html">
           随笔
         </a>
         →
       </span></p></div> </main></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.1333784b.js" defer></script><script src="/assets/js/2.027b195c.js" defer></script><script src="/assets/js/9.e026f72c.js" defer></script>
+    <script src="/assets/js/app.b76a0f01.js" defer></script><script src="/assets/js/2.027b195c.js" defer></script><script src="/assets/js/9.fd1b6b73.js" defer></script>
   </body>
 </html>

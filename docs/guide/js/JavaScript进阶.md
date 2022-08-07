@@ -704,3 +704,44 @@ Vue.use(plugin);
 vue
 
 ```
+
+### 异步更新队列
+
+``` js
+let active;
+
+let watch = function(cb) {
+  active = cb;
+  active();
+  active = null;
+}
+
+let queue = {};
+let queueJob = job => {
+  if(!queue.includes(job)) {
+    queue.push(job);
+  }
+};
+let flushJobs = () => {
+  let job;
+  while ((job = queue.shift()) !== undefined) {
+    job()
+  }
+}
+
+```
+### nextTick
+
+::: tip
+Vue.nextTick([callback, context])
+vm.$nextTick([callback])
+
+1.将回调延迟到下次DOM更新循环之后执行。
+2.通常用于再修改数据之后使用这个方法，在回调中获取更新后的DOM
+
+:::
+
+### Diff算法分析
+
+
+
