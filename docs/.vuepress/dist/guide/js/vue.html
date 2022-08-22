@@ -8,7 +8,7 @@
     <link rel="icon" href="/public/image/avatar.jpg">
     <meta name="description" content="qianxi blog">
     
-    <link rel="preload" href="/assets/css/0.styles.f6817f1a.css" as="style"><link rel="preload" href="/assets/js/app.a4f1318c.js" as="script"><link rel="preload" href="/assets/js/2.027b195c.js" as="script"><link rel="preload" href="/assets/js/11.e3ce21fe.js" as="script"><link rel="prefetch" href="/assets/js/10.b9e3a939.js"><link rel="prefetch" href="/assets/js/12.a0bd1d69.js"><link rel="prefetch" href="/assets/js/13.dfebb658.js"><link rel="prefetch" href="/assets/js/3.430a3f95.js"><link rel="prefetch" href="/assets/js/4.8338fec5.js"><link rel="prefetch" href="/assets/js/5.04b95b93.js"><link rel="prefetch" href="/assets/js/6.e3110d51.js"><link rel="prefetch" href="/assets/js/7.588e745f.js"><link rel="prefetch" href="/assets/js/8.e08085bb.js"><link rel="prefetch" href="/assets/js/9.a99b4b03.js">
+    <link rel="preload" href="/assets/css/0.styles.f6817f1a.css" as="style"><link rel="preload" href="/assets/js/app.7a1f7082.js" as="script"><link rel="preload" href="/assets/js/2.027b195c.js" as="script"><link rel="preload" href="/assets/js/11.bee43b61.js" as="script"><link rel="prefetch" href="/assets/js/10.1ee10f4d.js"><link rel="prefetch" href="/assets/js/12.a0bd1d69.js"><link rel="prefetch" href="/assets/js/13.dfebb658.js"><link rel="prefetch" href="/assets/js/3.430a3f95.js"><link rel="prefetch" href="/assets/js/4.8338fec5.js"><link rel="prefetch" href="/assets/js/5.04b95b93.js"><link rel="prefetch" href="/assets/js/6.e3110d51.js"><link rel="prefetch" href="/assets/js/7.24d22c22.js"><link rel="prefetch" href="/assets/js/8.360e1062.js"><link rel="prefetch" href="/assets/js/9.33000db3.js">
     <link rel="stylesheet" href="/assets/css/0.styles.f6817f1a.css">
   </head>
   <body>
@@ -20,7 +20,7 @@
     Home
   </a></div><div class="nav-item"><a href="/guide/js/" class="nav-link router-link-active">
     guide
-  </a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/guide/js/JavaScript进阶.html" class="sidebar-link">js</a></li><li><a href="/guide/js/vue.html" aria-current="page" class="active sidebar-link">vue框架源码</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guide/js/vue.html#vue导学" class="sidebar-link">Vue导学</a></li><li class="sidebar-sub-header"><a href="/guide/js/vue.html#computed-watch源码分析" class="sidebar-link">computed &amp; watch源码分析</a></li><li class="sidebar-sub-header"><a href="/guide/js/vue.html#vuex" class="sidebar-link">Vuex</a></li></ul></li><li><a href="/guide/other/随笔.html" class="sidebar-link">随笔</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="vue导学"><a href="#vue导学" class="header-anchor">#</a> Vue导学</h2> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>LRU: 最近最少使用， 记录一个页面自上次访问以来所经历的时间T，当必须淘汰一个页面时，选择现有页面中T值最大的，即最近最少使用的页面予以淘汰。</p></div> <h3 id="初识vue"><a href="#初识vue" class="header-anchor">#</a> 初识vue</h3> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>命名规则</p> <p>camelCase:(小驼峰)js函数、变量
+  </a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/guide/js/JavaScript进阶.html" class="sidebar-link">js</a></li><li><a href="/guide/js/vue.html" aria-current="page" class="active sidebar-link">vue框架源码</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guide/js/vue.html#vue导学" class="sidebar-link">Vue导学</a></li><li class="sidebar-sub-header"><a href="/guide/js/vue.html#computed-watch源码分析" class="sidebar-link">computed &amp; watch源码分析</a></li><li class="sidebar-sub-header"><a href="/guide/js/vue.html#vuex" class="sidebar-link">Vuex</a></li><li class="sidebar-sub-header"><a href="/guide/js/vue.html#ssr" class="sidebar-link">SSR</a></li><li class="sidebar-sub-header"><a href="/guide/js/vue.html#vue生命周期钩子函数执行原理分析" class="sidebar-link">Vue生命周期钩子函数执行原理分析</a></li></ul></li><li><a href="/guide/other/随笔.html" class="sidebar-link">随笔</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="vue导学"><a href="#vue导学" class="header-anchor">#</a> Vue导学</h2> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>LRU: 最近最少使用， 记录一个页面自上次访问以来所经历的时间T，当必须淘汰一个页面时，选择现有页面中T值最大的，即最近最少使用的页面予以淘汰。</p></div> <h3 id="初识vue"><a href="#初识vue" class="header-anchor">#</a> 初识vue</h3> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>命名规则</p> <p>camelCase:(小驼峰)js函数、变量
 PascalCase:(大驼峰)js类、组件文件名称
 kebab-case:(短横拼音法)HTML  引用的组件名</p> <p>条件渲染</p> <p>v-if： 是惰性的，直到条件变为真才开始渲染条件块
 v-show:适中都会渲染并保留在DOM中
@@ -270,7 +270,28 @@ history.pushState({}, &quot;title&quot;, &quot;anotherpage.html&quot;);
 history.replaceState({}, &quot;title&quot;, &quot;anotherpage.html&quot;);
 以上两个api不会触发 popstate事件
 </code></pre></div></div> <div class="language-js line-numbers-mode"><pre class="language-js"><code>
-</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h2 id="ssr"><a href="#ssr" class="header-anchor">#</a> SSR</h2> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>seo:搜索引擎优化</p> <p>ssr(serverSideRender)：服务端渲染</p> <p>csr(clientSideRender): 客户端渲染</p> <div class="language- extra-class"><pre><code>  1.用户请求网页
+  2.由CDN返回创建好的静态HTML文件给客户端
+  3.客户端收到HTML文件开始请求相应的CSS、javascript文件
+  4.浏览器下载javescript资源
+  5.浏览器执行javascript，开始调用接口请求数据
+  6.由服务器restful接口返回数据
+  7.取消loading，用户可进行交互
+</code></pre></div><p>rendering渲染优缺点</p> <div class="language- extra-class"><pre><code>  ssr：响应快，每次跳转路由都需要发送请求
+  csr：需要全部的css、html、js渲染加载完才会执行
+</code></pre></div></div> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>！！！！！！！！！！！听不懂啊听不懂~简直了~！！！！！！！！！
+同构实践</p> <p>通用代码</p> <div class="language- extra-class"><pre><code>  数据响应： 将数据进行响应式过程在服务器上是多余的，所以默认情况下是禁用。还可以避免将【数据】转为【响应式对象】的性能开销。
+
+  生命周期钩子函数
+  只有beforeCreate和created会在服务器端渲染(SSR)过程中被调用
+  避免在beforeCreate和created生命周期时产生全局副作用的代码
+</code></pre></div><p>微缓存</p> <div class="language- extra-class"><pre><code>  1.页面级别缓存：
+      可以再node.js的路由层面进行缓存
+      适用于页面内容基本不变的页面
+  2.组件级别缓存
+      vue-server-render内置支持组件级别缓存，可在创建render时传入LRU cache
+      适用于千面人的用户推荐页面（每个用户看到的是不同界面）
+</code></pre></div></div> <h2 id="vue生命周期钩子函数执行原理分析"><a href="#vue生命周期钩子函数执行原理分析" class="header-anchor">#</a> Vue生命周期钩子函数执行原理分析</h2></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
         ←
         <a href="/guide/js/JavaScript进阶.html" class="prev">
           js
@@ -279,6 +300,6 @@ history.replaceState({}, &quot;title&quot;, &quot;anotherpage.html&quot;);
         </a>
         →
       </span></p></div> </main></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.a4f1318c.js" defer></script><script src="/assets/js/2.027b195c.js" defer></script><script src="/assets/js/11.e3ce21fe.js" defer></script>
+    <script src="/assets/js/app.7a1f7082.js" defer></script><script src="/assets/js/2.027b195c.js" defer></script><script src="/assets/js/11.bee43b61.js" defer></script>
   </body>
 </html>

@@ -353,4 +353,53 @@ window上：
 
 ```
 
+## SSR
+
+::: tip
+  seo:搜索引擎优化
+
+  ssr(serverSideRender)：服务端渲染
+
+      
+  csr(clientSideRender): 客户端渲染
+
+      1.用户请求网页
+      2.由CDN返回创建好的静态HTML文件给客户端
+      3.客户端收到HTML文件开始请求相应的CSS、javascript文件
+      4.浏览器下载javescript资源
+      5.浏览器执行javascript，开始调用接口请求数据
+      6.由服务器restful接口返回数据
+      7.取消loading，用户可进行交互
+  
+  rendering渲染优缺点
+
+      ssr：响应快，每次跳转路由都需要发送请求
+      csr：需要全部的css、html、js渲染加载完才会执行
+  
+:::
+:::tip
+  ！！！！！！！！！！！听不懂啊听不懂~简直了~！！！！！！！！！
+  同构实践
+
+  通用代码
+
+      数据响应： 将数据进行响应式过程在服务器上是多余的，所以默认情况下是禁用。还可以避免将【数据】转为【响应式对象】的性能开销。
+
+      生命周期钩子函数
+      只有beforeCreate和created会在服务器端渲染(SSR)过程中被调用
+      避免在beforeCreate和created生命周期时产生全局副作用的代码
+
+  微缓存
+
+      1.页面级别缓存：
+          可以再node.js的路由层面进行缓存
+          适用于页面内容基本不变的页面
+      2.组件级别缓存
+          vue-server-render内置支持组件级别缓存，可在创建render时传入LRU cache
+          适用于千面人的用户推荐页面（每个用户看到的是不同界面）
+      
+:::
+
+## Vue生命周期钩子函数执行原理分析
+
 
