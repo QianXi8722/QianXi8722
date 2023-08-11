@@ -47,7 +47,7 @@
 <meta property="og:description" content="函数">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-08-09T06:55:51.000Z">
-<meta property="article:modified_time" content="2023-08-09T09:54:05.087Z">
+<meta property="article:modified_time" content="2023-08-11T06:58:10.603Z">
 <meta property="article:author" content="吕玲">
 <meta name="twitter:card" content="summary">
 <meta name="generator" content="Hexo 6.3.0"></head>
@@ -122,7 +122,7 @@
     </div>
     <div class="mdui-card-primary-subtitle mdui-typo">
         
-        <time class="dt-published" mdui-tooltip="{content:'创建时间：2023-08-09 02:55<br>最后更新时间：2023-08-09 05:54'}" datetime="2023-08-09T06:55:51.000Z">2023-08-09</time>
+        <time class="dt-published" mdui-tooltip="{content:'创建时间：2023-08-09 02:55<br>最后更新时间：2023-08-11 02:58'}" datetime="2023-08-09T06:55:51.000Z">2023-08-09</time>
         <span>-</span>
         
             <span>2023/08/09/javaScript/高阶js_核心_函数与函数式编程/</span>
@@ -292,11 +292,63 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <span class="token punctuation">&#125;</span>
 <span class="token keyword">var</span> newArr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">_map</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">return</span> item<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>高阶函数的使用思路就是一个 封装公共逻辑的过程</p>
+<p><strong>函数柯里化</strong><br>柯里化是指这样一个函数（假设叫做createCurry）,它接收函数A作为参数，运行后能够返回一个新的函数，并且这个新的函数能够处理函数A的剩余参数。</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 假设有一个接收三个参数的函数A</span>
+<span class="token keyword">function</span> <span class="token constant">A</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>c</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// do something</span>
+<span class="token punctuation">&#125;</span>
+<span class="token comment">// 又假设我们有一个已经封装好的柯里化通用函数createcurry。它接收bar作为参数，能够将A转化为柯里化函数，返回结果解释这个被转化后的函数</span>
+<span class="token keyword">var</span> _A <span class="token operator">=</span> <span class="token function">createCurry</span><span class="token punctuation">(</span><span class="token constant">A</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment">// 那么_A作为createCurry运行的返回函数，能够处理A的剩余参数。因此下面的运行结果都是等价的</span>
+<span class="token function">_A</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">_A</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">_A</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">_A</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token constant">A</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>函数A被createCurry转化后得到柯里化函数_A, _A能够处理A的所有剩余参数。因此柯里化也被称为部分求值<br>例如，有一个简单的加法函数，它能够将自身的三个参数加起来并返回计算结果：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>c</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> a<span class="token operator">+</span>b<span class="token operator">+</span>c<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>那么add函数的柯里化函数_add则可以写成：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">_add</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">b</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">c</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> a <span class="token operator">+</span>b <span class="token operator">+</span>c<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token comment">// 因此下面的运算方式是等价的</span>
+<span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">_add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-</main>
+<p>柯里化函数的运行过程其实是一个参数的收集过程，我们将每一次传入的参数收集起来，并在最里层进行处理，并在最里层进行处理。因此在实现createCurry时，可以借助这个思路进行封装</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">/**
+ * arity  用于标记剩余参数的个数
+ * args  用来收集参数
+ */</span>
+<span class="token keyword">function</span> <span class="token function">createCurry</span><span class="token punctuation">(</span><span class="token parameter">func<span class="token punctuation">,</span> arity<span class="token punctuation">,</span> args</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 第一次执行时，并不会传入arity，而是直接获取func参数的个数func.length</span>
+    <span class="token keyword">var</span> arity <span class="token operator">=</span> arity <span class="token operator">||</span> func<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+    <span class="token comment">// 第一次执行也不会传入args，而是默认为空数组</span>
+    <span class="token keyword">var</span> args <span class="token operator">=</span> args <span class="token operator">||</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> <span class="token function-variable function">wrapper</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 将wrapper中的参数收集到args中</span>
+        <span class="token keyword">var</span> _args <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>arguments<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>args<span class="token punctuation">,</span> _args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 如果参数个数小于最初的func.length, 则递归调用，继续收集参数</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>_args<span class="token punctuation">.</span>length <span class="token operator">&lt;</span> arity<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            arity <span class="token operator">-=</span> _args<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+            <span class="token keyword">return</span> <span class="token function">createCurry</span><span class="token punctuation">(</span>func<span class="token punctuation">,</span> arity<span class="token punctuation">,</span>args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> <span class="token function">func</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>func<span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> wrapper<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></main>
         
         <blockquote class="mdui-m-x-0 mdui-m-t-4">
     <strong>
